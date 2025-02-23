@@ -1,0 +1,21 @@
+export const messages = {
+	'welcome.title': 'Generative Typed Chat',
+	'welcome.description': 'Transform natural language into structured TypeScript interfaces, create JSON schemas, and build type-safe AI conversations. A powerful tool for developers who want to ensure consistency in their AI interactions.',
+	'welcome.creator': 'Created by UNED student Aleph.251',
+	'welcome.warning': 'Warning: This app is only to be launched at local server. You must not use it on any cloud host as it could compromise your credentials and data.',
+	'welcome.flow.title': 'UI/UX Flow:',
+	'welcome.stage1.title': 'Stage 1: Types store',
+	'welcome.stage1.description': 'Start by converting natural language prompts into TypeScript interfaces, then transform these interfaces into JSON schemas. Perfect for defining your data structures.',
+	'welcome.stage2.title': 'Stage 2: Runnable Conversations',
+	'welcome.stage2.description': 'Create structured, type-safe conversations using your schemas. Ensure AI responses match your defined interfaces for consistent, reliable interactions.',
+	'welcome.features.title': 'Core Features',
+	'welcome.features.natural.title': 'Natural to TypeScript',
+	'welcome.features.natural.description': 'Convert natural language descriptions into precise TypeScript interfaces with AI assistance.',
+	'welcome.features.typeSafe.title': 'Type-Safe Chats',
+	'welcome.features.typeSafe.description': 'Ensure AI responses conform to your defined types for reliable, structured conversations.',
+	'welcome.features.schema.title': 'Schema Management',
+	'welcome.features.schema.description': 'Store and manage your interfaces and schemas in a centralized repository for easy access.',
+	'welcome.features.sdk.title': 'SDK Integration',
+	'welcome.features.sdk.description': 'Integrate validated schemas and type-safe conversations into your applications with our SDK.',
+	'welcome.cta': 'Start with Stage 1'
+};

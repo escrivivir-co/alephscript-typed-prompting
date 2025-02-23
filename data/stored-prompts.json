@@ -1,0 +1,240 @@
+{
+  "schemas": [
+    {
+      "id": 1,
+      "name": "Product Interface",
+      "typeScript": "interface Product {\n  id: number;\n  name: string;\n  description: string;\n  price: number;\n  category: string;\n  stock: number;\n  images?: string[];\n  specifications?: Record<string, string>;\n}",
+      "jsonSchema": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"price\":{\"type\":\"number\"},\"category\":{\"type\":\"string\"},\"stock\":{\"type\":\"number\"},\"images\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"specifications\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}}},\"required\":[\"id\",\"name\",\"description\",\"price\",\"category\",\"stock\"]}",
+      "category": "E-commerce",
+      "labels": [
+        "product",
+        "shop",
+        "inventory"
+      ],
+      "description": "Standard product interface for e-commerce applications",
+      "libraryId": 1,
+      "createdAt": "2025-02-23T15:39:31.070Z"
+    },
+    {
+      "id": 2,
+      "name": "Spanish Order Schema",
+      "typeScript": "export interface cliente { id?: number; nombre: string; email?: string; }\nexport interface producto { id?: number; nombre: string; precio: number; }\nexport interface orden { id?: number; cliente?: cliente; producto: producto; cantidad: number; }\nexport type Response = [cliente, producto, orden]",
+      "jsonSchema": "{\"type\":\"array\",\"items\":[{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"nombre\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"}},\"required\":[\"nombre\"]},{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"nombre\":{\"type\":\"string\"},\"precio\":{\"type\":\"number\"}},\"required\":[\"nombre\",\"precio\"]},{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"cliente\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"nombre\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"}},\"required\":[\"nombre\"]},\"producto\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"nombre\":{\"type\":\"string\"},\"precio\":{\"type\":\"number\"}},\"required\":[\"nombre\",\"precio\"]},\"cantidad\":{\"type\":\"number\"}},\"required\":[\"producto\",\"cantidad\"]}],\"minItems\":3,\"maxItems\":3}",
+      "category": "E-commerce",
+      "labels": [
+        "order",
+        "shop",
+        "spanish"
+      ],
+      "description": "Spanish order management interface",
+      "libraryId": 1,
+      "createdAt": "2025-02-23T15:39:31.070Z"
+    },
+    {
+      "id": 3,
+      "name": "Test1 Order",
+      "typeScript": "export interface User { id: number; name: string; email: string; }\n\nexport interface Product { id: number; name: string; price: number; }\n\nexport interface Order { id: number; userId: number; productId: number; quantity: number; }\nexport interface TypedMessage { content: Order }",
+      "jsonSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"definitions\": {\n    \"User\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"number\"\n        },\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"email\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"id\",\n        \"name\",\n        \"email\"\n      ],\n      \"additionalProperties\": false\n    },\n    \"Product\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"number\"\n        },\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"price\": {\n          \"type\": \"number\"\n        }\n      },\n      \"required\": [\n        \"id\",\n        \"name\",\n        \"price\"\n      ],\n      \"additionalProperties\": false\n    },\n    \"Order\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"number\"\n        },\n        \"userId\": {\n          \"type\": \"number\"\n        },\n        \"productId\": {\n          \"type\": \"number\"\n        },\n        \"quantity\": {\n          \"type\": \"number\"\n        }\n      },\n      \"required\": [\n        \"id\",\n        \"userId\",\n        \"productId\",\n        \"quantity\"\n      ],\n      \"additionalProperties\": false\n    },\n    \"TypedMessage\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"content\": {\n          \"$ref\": \"#/definitions/Order\"\n        }\n      },\n      \"required\": [\n        \"content\"\n      ],\n      \"additionalProperties\": false\n    }\n  }\n}",
+      "category": "E-commerce",
+      "labels": [
+        "test"
+      ],
+      "description": "Petición de comanda",
+      "createdAt": "2025-02-23T15:42:18.080Z",
+      "libraryId": null
+    },
+    {
+      "id": 4,
+      "name": "Primera buena",
+      "typeScript": "interface Product {\n  id: string;\n  name: string;\n  price: number;\n  description?: string;\n  quantityAvailable: number;\n}\n\ninterface OrderItem {\n  product: Product;\n  quantity: number;\n}\n\ninterface Order {\n  id: string;\n  items: OrderItem[];\n  totalAmount: number;\n  status: 'pending' | 'completed' | 'cancelled';\n  orderDate: Date;\n  customerName: string;\n  shippingAddress: string;\n}\nexport interface TypedMessage { content: Order }",
+      "jsonSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"$ref\": \"#/definitions/TypedMessage\",\n  \"definitions\": {\n    \"TypedMessage\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"content\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"id\": {\n              \"type\": \"string\"\n            },\n            \"items\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"object\",\n                \"properties\": {\n                  \"product\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n                      \"id\": {\n                        \"type\": \"string\"\n                      },\n                      \"name\": {\n                        \"type\": \"string\"\n                      },\n                      \"price\": {\n                        \"type\": \"number\"\n                      },\n                      \"description\": {\n                        \"type\": \"string\"\n                      },\n                      \"quantityAvailable\": {\n                        \"type\": \"number\"\n                      }\n                    },\n                    \"required\": [\n                      \"id\",\n                      \"name\",\n                      \"price\",\n                      \"quantityAvailable\"\n                    ],\n                    \"additionalProperties\": false\n                  },\n                  \"quantity\": {\n                    \"type\": \"number\"\n                  }\n                },\n                \"required\": [\n                  \"product\",\n                  \"quantity\"\n                ],\n                \"additionalProperties\": false\n              }\n            },\n            \"totalAmount\": {\n              \"type\": \"number\"\n            },\n            \"status\": {\n              \"type\": \"string\",\n              \"enum\": [\n                \"pending\",\n                \"completed\",\n                \"cancelled\"\n              ]\n            },\n            \"orderDate\": {\n              \"type\": \"string\",\n              \"format\": \"date-time\"\n            },\n            \"customerName\": {\n              \"type\": \"string\"\n            },\n            \"shippingAddress\": {\n              \"type\": \"string\"\n            }\n          },\n          \"required\": [\n            \"id\",\n            \"items\",\n            \"totalAmount\",\n            \"status\",\n            \"orderDate\",\n            \"customerName\",\n            \"shippingAddress\"\n          ],\n          \"additionalProperties\": false\n        }\n      },\n      \"required\": [\n        \"content\"\n      ],\n      \"additionalProperties\": false\n    }\n  }\n}",
+      "category": "E-commerce",
+      "labels": [
+        "test"
+      ],
+      "description": null,
+      "createdAt": "2025-02-23T19:07:23.367Z",
+      "libraryId": null
+    }
+  ],
+  "libraries": [
+    {
+      "id": 1,
+      "name": "Common shop interface",
+      "description": "A collection of TypeScript interfaces for e-commerce applications",
+      "createdAt": "2025-02-23T15:39:31.068Z"
+    }
+  ],
+  "aiConfigs": [
+    {
+      "id": 1,
+      "name": "OpenAI GPT-4",
+      "provider": "openai",
+      "apiKey": "sk-svcacct-tmDo53W1y_2R082WpoTMq1HSE3M9vjQk8Z5kMGc5kr9u7kUWjly6VX-rxxF2xmSqSKBT3BlbkFJsX0aJIr2Q4nBjY_1psOZImmV1C9SJ1SKuLYFFhps7sU0vIVfhpeRJAG50AE_TFAtlAA",
+      "baseUrl": null,
+      "models": [
+        "gpt-4o",
+        "gpt-4-turbo",
+        "gpt-3.5-turbo"
+      ],
+      "settings": "{\"defaultModel\":\"gpt-4\",\"temperature\":0.7,\"max_tokens\":2000}",
+      "isActive": true,
+      "createdAt": "2025-02-23T15:39:31.070Z"
+    },
+    {
+      "id": 2,
+      "name": "DeepSeek",
+      "provider": "deepseek",
+      "apiKey": null,
+      "baseUrl": null,
+      "models": [
+        "deepseek-chat",
+        "deepseek-coder"
+      ],
+      "settings": "{\"defaultModel\":\"deepseek-chat\",\"temperature\":0.7,\"max_tokens\":2000}",
+      "isActive": true,
+      "createdAt": "2025-02-23T15:39:31.070Z"
+    },
+    {
+      "id": 3,
+      "name": "Ollama Local",
+      "provider": "ollama",
+      "apiKey": null,
+      "baseUrl": null,
+      "models": [
+        "llama2",
+        "codellama",
+        "mistral"
+      ],
+      "settings": "{\"defaultModel\":\"llama2\",\"temperature\":0.7,\"max_tokens\":2000}",
+      "isActive": true,
+      "createdAt": "2025-02-23T15:39:31.070Z"
+    },
+    {
+      "id": 4,
+      "name": "Dummy Model",
+      "provider": "openai",
+      "apiKey": null,
+      "baseUrl": null,
+      "models": [
+        "dummy"
+      ],
+      "settings": "{\"defaultModel\":\"dummy\",\"temperature\":0,\"max_tokens\":100}",
+      "isActive": true,
+      "createdAt": "2025-02-23T15:39:31.070Z"
+    }
+  ],
+  "storedPrompts": [
+    {
+      "id": 1,
+      "name": "teste",
+      "content": "Order a pizza",
+      "modelId": 4,
+      "modelName": "Dummy Model",
+      "schemaId": 3,
+      "modelParams": "{\"temperature\":0.7,\"max_tokens\":2000,\"top_p\":1}",
+      "type": "conversation",
+      "libraryId": null,
+      "libraryName": null,
+      "selectedSchemas": [
+        {
+          "id": 3,
+          "name": "Test1 Order"
+        }
+      ],
+      "rawOutgoingPrompt": "{\n  \"prompt\": \"Order a pizza\",\n  \"selectedLibraryInterfaces\": \"export interface User { id: number; name: string; email: string; }\\n\\nexport interface Product { id: number; name: string; price: number; }\\n\\nexport interface Order { id: number; userId: number; productId: number; quantity: number; }\\nexport interface TypedMessage { content: Order }\",\n  \"model\": \"4\",\n  \"params\": {\n    \"temperature\": 0.7,\n    \"max_tokens\": 2000,\n    \"top_p\": 1\n  },\n  \"type\": \"conversation\"\n}",
+      "rawIncomingResponse": "{\n  \"content\": \"{\\\"content\\\":{\\\"id\\\":1,\\\"userId\\\":1,\\\"productId\\\":1,\\\"quantity\\\":1}}\"\n}",
+      "createdAt": "2025-02-23T17:29:43.766Z"
+    },
+    {
+      "id": 2,
+      "name": "Test2",
+      "content": "Order a pizza",
+      "modelId": 4,
+      "modelName": "Dummy Model",
+      "schemaId": 3,
+      "modelParams": "{\"temperature\":0.7,\"max_tokens\":2000,\"top_p\":1}",
+      "type": "conversation",
+      "libraryId": null,
+      "libraryName": null,
+      "selectedSchemas": [
+        {
+          "id": 3,
+          "name": "Test1 Order"
+        }
+      ],
+      "rawOutgoingPrompt": "{\n  \"prompt\": \"Order a pizza\",\n  \"selectedLibraryInterfaces\": \"export interface User { id: number; name: string; email: string; }\\n\\nexport interface Product { id: number; name: string; price: number; }\\n\\nexport interface Order { id: number; userId: number; productId: number; quantity: number; }\\nexport interface TypedMessage { content: Order }\",\n  \"model\": \"4\",\n  \"params\": {\n    \"temperature\": 0.7,\n    \"max_tokens\": 2000,\n    \"top_p\": 1\n  },\n  \"type\": \"conversation\"\n}",
+      "rawIncomingResponse": "\"\"",
+      "createdAt": "2025-02-23T17:47:04.098Z"
+    },
+    {
+      "id": 3,
+      "name": "Pizza",
+      "content": "Order a pizza",
+      "modelId": 1,
+      "modelName": "OpenAI GPT-4",
+      "schemaId": 4,
+      "modelParams": "{\"temperature\":0.7,\"max_tokens\":2000,\"top_p\":1}",
+      "type": "conversation",
+      "libraryId": null,
+      "libraryName": null,
+      "selectedSchemas": [
+        {
+          "id": 4,
+          "name": "Primera buena"
+        }
+      ],
+      "rawOutgoingPrompt": "{\n  \"prompt\": \"Order a pizza\",\n  \"selectedLibraryInterfaces\": \"interface Product {\\n  id: string;\\n  name: string;\\n  price: number;\\n  description?: string;\\n  quantityAvailable: number;\\n}\\n\\ninterface OrderItem {\\n  product: Product;\\n  quantity: number;\\n}\\n\\ninterface Order {\\n  id: string;\\n  items: OrderItem[];\\n  totalAmount: number;\\n  status: 'pending' | 'completed' | 'cancelled';\\n  orderDate: Date;\\n  customerName: string;\\n  shippingAddress: string;\\n}\\nexport interface TypedMessage { content: Order }\",\n  \"model\": \"1\",\n  \"params\": {\n    \"temperature\": 0.7,\n    \"max_tokens\": 2000,\n    \"top_p\": 1\n  },\n  \"type\": \"conversation\"\n}",
+      "rawIncomingResponse": "\"\"",
+      "createdAt": "2025-02-23T19:11:57.171Z"
+    },
+    {
+      "id": 4,
+      "name": "Pizza Hawai",
+      "content": "Order a pizza. Just by name \"barbacoa\" they know which pizza is. And 2 hot dogs. I'm Bob. Add also some icecube.",
+      "modelId": 1,
+      "modelName": "OpenAI GPT-4",
+      "schemaId": 4,
+      "modelParams": "{\"temperature\":0.7,\"max_tokens\":2000,\"top_p\":1}",
+      "type": "conversation",
+      "libraryId": null,
+      "libraryName": null,
+      "selectedSchemas": [
+        {
+          "id": 4,
+          "name": "Primera buena"
+        }
+      ],
+      "rawOutgoingPrompt": "{\n  \"prompt\": \"Order a pizza. Just by name \\\"barbacoa\\\" they know which pizza is. And 2 hot dogs. I'm Bob. Add also some icecube.\",\n  \"selectedLibraryInterfaces\": \"interface Product {\\n  id: string;\\n  name: string;\\n  price: number;\\n  description?: string;\\n  quantityAvailable: number;\\n}\\n\\ninterface OrderItem {\\n  product: Product;\\n  quantity: number;\\n}\\n\\ninterface Order {\\n  id: string;\\n  items: OrderItem[];\\n  totalAmount: number;\\n  status: 'pending' | 'completed' | 'cancelled';\\n  orderDate: Date;\\n  customerName: string;\\n  shippingAddress: string;\\n}\\nexport interface TypedMessage { content: Order }\",\n  \"model\": \"1\",\n  \"params\": {\n    \"temperature\": 0.7,\n    \"max_tokens\": 2000,\n    \"top_p\": 1\n  },\n  \"type\": \"conversation\"\n}",
+      "rawIncomingResponse": "\"\"",
+      "createdAt": "2025-02-23T19:38:45.216Z"
+    },
+    {
+      "id": 5,
+      "name": "Test",
+      "content": "Order a pizza. Just by name \"barbacoa\" they know which pizza is. And 2 hot dogs. I'm Bob. Add also some icecube.",
+      "modelId": 1,
+      "modelName": "OpenAI GPT-4",
+      "schemaId": 4,
+      "modelParams": "{\"temperature\":0.7,\"max_tokens\":2000,\"top_p\":1}",
+      "type": "conversation",
+      "libraryId": null,
+      "libraryName": null,
+      "selectedSchemas": [
+        {
+          "id": 4,
+          "name": "Primera buena"
+        }
+      ],
+      "rawOutgoingPrompt": "{\n  \"prompt\": \"Order a pizza. Just by name \\\"barbacoa\\\" they know which pizza is. And 2 hot dogs. I'm Bob. Add also some icecube.\",\n  \"selectedLibraryInterfaces\": \"interface Product {\\n  id: string;\\n  name: string;\\n  price: number;\\n  description?: string;\\n  quantityAvailable: number;\\n}\\n\\ninterface OrderItem {\\n  product: Product;\\n  quantity: number;\\n}\\n\\ninterface Order {\\n  id: string;\\n  items: OrderItem[];\\n  totalAmount: number;\\n  status: 'pending' | 'completed' | 'cancelled';\\n  orderDate: Date;\\n  customerName: string;\\n  shippingAddress: string;\\n}\\nexport interface TypedMessage { content: Order }\",\n  \"model\": \"1\",\n  \"params\": {\n    \"temperature\": 0.7,\n    \"max_tokens\": 2000,\n    \"top_p\": 1\n  },\n  \"type\": \"conversation\"\n}",
+      "rawIncomingResponse": "{\"content\":{\"id\":\"order123\",\"items\":[{\"product\":{\"id\":\"pizza-barbacoa\",\"name\":\"Barbacoa Pizza\",\"price\":12.99,\"quantityAvailable\":10},\"quantity\":1},{\"product\":{\"id\":\"hot-dog\",\"name\":\"Hot Dog\",\"price\":3.5,\"quantityAvailable\":20},\"quantity\":2},{\"product\":{\"id\":\"ice-cube\",\"name\":\"Ice Cube\",\"price\":0.5,\"quantityAvailable\":100},\"quantity\":1}],\"totalAmount\":20.49,\"status\":\"pending\",\"orderDate\":\"2023-10-10T12:00:00Z\",\"customerName\":\"Bob\",\"shippingAddress\":\"123 Main St, Anytown, USA\"}}",
+      "createdAt": "2025-02-23T20:30:40.856Z"
+    }
+  ],
+  "validationHistories": [],
+  "schemaCounter": 5,
+  "libraryCounter": 2,
+  "aiConfigCounter": 5,
+  "storedPromptCounter": 6,
+  "validationHistoryCounter": 1
+}
