@@ -55,6 +55,17 @@
       "description": null,
       "createdAt": "2025-02-23T19:07:23.367Z",
       "libraryId": null
+    },
+    {
+      "id": 5,
+      "name": "TestMCPSchema",
+      "typeScript": "interface TestMCPSchema { id: number; value: string; }",
+      "jsonSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"definitions\": {}\n}",
+      "category": "Testing",
+      "labels": [],
+      "description": null,
+      "createdAt": "2026-01-04T18:21:11.485Z",
+      "libraryId": null
     }
   ],
   "libraries": [
@@ -232,7 +243,7 @@
     }
   ],
   "validationHistories": [],
-  "schemaCounter": 5,
+  "schemaCounter": 6,
   "libraryCounter": 2,
   "aiConfigCounter": 5,
   "storedPromptCounter": 6,

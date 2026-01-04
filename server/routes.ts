@@ -13,6 +13,7 @@ import validationRoutes from "./routes/validation.routes";
 import interfaceGenerationRoutes from "./routes/interface-generation.routes";
 import storedPromptsRoutes from "./routes/stored-prompts.routes";
 import clientPackageRoutes from "./routes/client-package.routes";
+import convertRoutes from "./routes/convert.routes";
 
 // Add new initialization function
 async function initializeAIConfigs(storage: any) {
@@ -106,6 +107,7 @@ export async function registerRoutes(app: Express) {
     app.use("/api/generate", interfaceGenerationRoutes);
     app.use("/api/stored-prompts", storedPromptsRoutes);
     app.use("/api/client-package", clientPackageRoutes);
+    app.use("/api/convert", convertRoutes);
 
     const server = createServer(app);
     return server;
